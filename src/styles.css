@@ -116,9 +116,34 @@ button {
 }
 
 .lesson-strip,
-.workspace {
+.workspace,
+.lesson-picker {
   max-width: 1320px;
   margin: 0 auto;
+}
+
+.lesson-picker {
+  margin-bottom: 22px;
+  padding: 18px 0;
+}
+
+.lesson-picker label {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 700;
+  color: #243d36;
+}
+
+.lesson-picker select {
+  width: 100%;
+  max-width: 480px;
+  padding: 12px 14px;
+  border: 1px solid #c9d8d2;
+  border-radius: 10px;
+  background: #fbfdfc;
+  color: #1b2f2a;
+  font-size: 1rem;
 }
 
 .lesson-panel {
@@ -368,6 +393,7 @@ button {
 
 .action-bar {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   margin: 18px 0 0;
 }
@@ -382,6 +408,30 @@ button {
   background: #ad303f;
   color: white;
   font-weight: 900;
+}
+
+.secondary-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #c9d8d2;
+  border-radius: 8px;
+  padding: 11px 15px;
+  background: #f8fbfa;
+  color: #243d36;
+  font-weight: 900;
+}
+
+.secondary-action.next-action {
+  border-color: #1d6b57;
+  background: #d7eee5;
+  color: #134436;
+}
+
+.secondary-action:disabled,
+.secondary-action.next-action:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
 }
 
 .primary-action:disabled {
