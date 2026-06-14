@@ -74,6 +74,17 @@ function App() {
     }
   }
 
+  function goToPreviousQuestion() {
+    if (filteredQuestions.length === 0) {
+      return;
+    }
+
+    const prevIndex = selectedQuestionIndex - 1;
+    if (prevIndex >= 0) {
+      chooseQuestion(filteredQuestions[prevIndex]);
+    }
+  }
+
   function goToNextQuestion() {
     if (filteredQuestions.length === 0) {
       return;
@@ -228,6 +239,14 @@ function App() {
 
           <div className="action-bar">
             <button
+              className="secondary-action prev-action"
+              onClick={goToPreviousQuestion}
+              disabled={selectedQuestionIndex <= 0}
+              type="button"
+            >
+              Previous Question
+            </button>
+            <button
               className="primary-action"
               disabled={!selectedChoice}
               onClick={() => setShowReview(true)}
@@ -235,16 +254,6 @@ function App() {
             >
               <GraduationCap size={18} />
               Grade Answer
-            </button>
-            <button
-              className="secondary-action"
-              onClick={() => {
-                setSelectedChoice("");
-                setShowReview(false);
-              }}
-              type="button"
-            >
-              Reset
             </button>
             <button
               className="secondary-action next-action"
