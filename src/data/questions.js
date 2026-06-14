@@ -15,7 +15,23 @@ export const lessons = [
       "Security Business Units"
     ]
   }
-];
+,
+  {
+    id: "lesson-02",
+    title: "Lesson 2: Threats, Attack Surface, and Social Engineering",
+    topics: [
+    "Threat Actors",
+    "Attack Surface",
+    "Vulnerability, Threat, and Risk",
+    "Threat Actor Attributes",
+    "Threat Actor Motivation",
+    "Hackers and Hacktivists",
+    "Nation-State Actors",
+    "Organized Crime and Competitors",
+    "Internal Threat Actors",
+    "Social Engineering"
+]
+  }];
 
 export const questions = [
   {
@@ -518,4 +534,635 @@ export const questions = [
     examTip:
       "Prioritize remediation based on the greatest business impact and likelihood of exposure; high-risk data protections usually come before administrative cleanup."
   }
+,
+  {
+    id: "L02-Q001",
+    difficulty: "Medium",
+    domain: "Threat Intelligence",
+    objective: "2.1 Compare vulnerability, threat, and risk concepts",
+    mapping: "SY0-701 Objective 2.1 - Vulnerability, threat, risk definitions",
+    scenario: "A manufacturing firm has an unpatched Internet-facing web server, a known exploit exists, and executives are concerned about potential data loss. Which statement best describes risk in this situation?",
+    choices: [
+      "A. The unpatched server is the risk because it has a flaw",
+      "B. The known exploit is the risk because it enables compromise",
+      "C. The possibility of data loss from the exploit is the risk",
+      "D. The server owner is the risk because they must decide what to do"
+],
+    correctAnswer: "C",
+    explanation: "Risk is the potential for loss or damage when a vulnerability is exploited by a threat. The unpatched server is the vulnerability, the exploit is the threat, and data loss is the risk.",
+    incorrect: {
+      "A": "The server is the vulnerability, not the risk itself.",
+      "B": "The exploit is a threat event, not the actual potential loss.",
+      "D": "The owner is responsible for decisions, but risk is the potential impact."
+},
+    examTip: "Risk describes the potential loss; threats and vulnerabilities are the contributing factors."},
+  {
+    id: "L02-Q002",
+    difficulty: "Medium",
+    domain: "Threat Intelligence",
+    objective: "2.1 Compare vulnerability, threat, and risk concepts",
+    mapping: "SY0-701 Objective 2.1 - Vulnerability, threat, risk definitions",
+    scenario: "A security assessment reports that a missing patch is a weakness, a hacker scanning the network is a threat, and the possible theft of customer records is a concern. Which term best matches the missing patch?",
+    choices: [
+      "A. Risk",
+      "B. Vulnerability",
+      "C. Control",
+      "D. Incident"
+],
+    correctAnswer: "B",
+    explanation: "A missing patch is a vulnerability, which is a weakness that can be exploited by a threat.",
+    incorrect: {
+      "A": "Risk is the potential loss, not the weakness itself.",
+      "C": "A control mitigates vulnerabilities, it is not the weakness.",
+      "D": "An incident is a realized event, not the condition of missing a patch."
+},
+    examTip: "Vulnerabilities are weaknesses; threats are actors or events; risk is what happens when they combine."},
+  {
+    id: "L02-Q003",
+    difficulty: "Hard",
+    domain: "Threat Actor Analysis",
+    objective: "2.2 Describe attributes of threat actors",
+    mapping: "SY0-701 Objective 2.2 - Threat actor characteristics",
+    scenario: "A security team categorizes attackers by their skill, resources, and intent. Which attribute most clearly distinguishes a nation-state actor from a casual hacker?",
+    choices: [
+      "A. Capability",
+      "B. Control",
+      "C. Confidentiality",
+      "D. Availability"
+],
+    correctAnswer: "A",
+    explanation: "Capability, including technical skill and resources, distinguishes a well-funded nation-state actor from a low-skill casual hacker.",
+    incorrect: {
+      "B": "Control is a mitigation, not an attacker attribute.",
+      "C": "Confidentiality is a security goal, not a threat actor attribute.",
+      "D": "Availability is also a goal, not an actor attribute."
+},
+    examTip: "Threat actor attributes usually include capability, intent, and targeting profile."},
+  {
+    id: "L02-Q004",
+    difficulty: "Medium",
+    domain: "Threat Actor Analysis",
+    objective: "2.2 Describe attributes of threat actors",
+    mapping: "SY0-701 Objective 2.2 - Threat actor characteristics",
+    scenario: "A group is identified as using custom tools, long-term persistence, and stealthy lateral movement in a critical infrastructure network. Which attribute is most consistent with this description?",
+    choices: [
+      "A. Motivation",
+      "B. Capability",
+      "C. Vulnerability",
+      "D. Compliance"
+],
+    correctAnswer: "B",
+    explanation: "Custom tools and stealthy persistence indicate high capability, a distinguishing attribute of advanced threat actors.",
+    incorrect: {
+      "A": "Motivation is not directly inferred from technical behavior.",
+      "C": "Vulnerability is what the attacker exploits, not the attacker attribute.",
+      "D": "Compliance is unrelated to attacker characteristics."
+},
+    examTip: "Advanced actors are often identified by their capability and persistence."},
+  {
+    id: "L02-Q005",
+    difficulty: "Medium",
+    domain: "Threat Motivations",
+    objective: "2.3 Explain motivations of threat actors",
+    mapping: "SY0-701 Objective 2.3 - Threat actor motivations",
+    scenario: "An attacker steals confidential customer data and sells it on the dark web. Which motivation best describes this actor?",
+    choices: [
+      "A. Ideology",
+      "B. Financial gain",
+      "C. Espionage",
+      "D. Reputation"
+],
+    correctAnswer: "B",
+    explanation: "Selling stolen data is motivated by financial gain, a common driver for organized crime groups.",
+    incorrect: {
+      "A": "Ideology is more aligned with hacktivists than data theft for sale.",
+      "C": "Espionage is intelligence gathering, not immediate profit from sales.",
+      "D": "Reputation is not the primary driver here."
+},
+    examTip: "Financially motivated actors usually target data or systems they can monetize."},
+  {
+    id: "L02-Q006",
+    difficulty: "Hard",
+    domain: "Threat Motivations",
+    objective: "2.3 Explain motivations of threat actors",
+    mapping: "SY0-701 Objective 2.3 - Threat actor motivations",
+    scenario: "A group defaces a government website and posts a manifesto about climate policy. Which motivation best fits this attack?",
+    choices: [
+      "A. Financial gain",
+      "B. Competitor advantage",
+      "C. Ideology",
+      "D. Accidental disclosure"
+],
+    correctAnswer: "C",
+    explanation: "Defacing a website for political protest indicates ideological motivation, typical of hacktivists.",
+    incorrect: {
+      "A": "No financial motive is described.",
+      "B": "This does not appear to be business competition.",
+      "D": "The attack is intentional, not accidental."
+},
+    examTip: "Hacktivists are often motivated by ideology, social causes, or political statements."},
+  {
+    id: "L02-Q007",
+    difficulty: "Hard",
+    domain: "Hackers and Hacktivists",
+    objective: "2.4 Compare hackers and hacktivists",
+    mapping: "SY0-701 Objective 2.4 - Hacker categories and motivations",
+    scenario: "A website outage is caused by an attacker who claimed credit on social media for protesting a controversial law. The attack used common DDoS tools. Which label fits this actor best?",
+    choices: [
+      "A. Nation-state",
+      "B. Hacktivist",
+      "C. Insider",
+      "D. Competitor"
+],
+    correctAnswer: "B",
+    explanation: "A social protest using publicly claimed DDoS tools aligns with hacktivist behavior.",
+    incorrect: {
+      "A": "Nation-state actors usually operate covertly and strategically, not for public protest.",
+      "C": "No internal access is indicated.",
+      "D": "There is no business competition motive."
+},
+    examTip: "Hacktivists often use visible tactics to further ideological goals."},
+  {
+    id: "L02-Q008",
+    difficulty: "Expert",
+    domain: "Nation-State Actors",
+    objective: "2.5 Describe nation-state actor characteristics",
+    mapping: "SY0-701 Objective 2.5 - Nation-state and advanced actors",
+    scenario: "A defense contractor finds that its supply chain partners were targeted with custom malware and long-term credential harvesting. Which characteristic strongly suggests a nation-state actor?",
+    choices: [
+      "A. Use of commodity ransomware",
+      "B. Short-lived opportunistic attacks",
+      "C. Strategic, custom tooling aimed at sensitive targets",
+      "D. Random scanning of internet hosts"
+],
+    correctAnswer: "C",
+    explanation: "Custom tooling and targeting of sensitive defense supply chain partners are hallmarks of nation-state actors.",
+    incorrect: {
+      "A": "Commodity ransomware is more common with criminal groups.",
+      "B": "Nation-state activity is usually persistent and strategic, not opportunistic.",
+      "D": "Random scanning is typical of low-level attackers, not nation-states."
+},
+    examTip: "Long-term, strategic targeting of high-value assets suggests advanced nation-state capability."},
+  {
+    id: "L02-Q009",
+    difficulty: "Hard",
+    domain: "Organized Crime and Competitors",
+    objective: "2.6 Differentiate organized crime and competitor threats",
+    mapping: "SY0-701 Objective 2.6 - Organized crime and competitor tactics",
+    scenario: "A competitor pays an insider to copy confidential pricing models for market advantage. Which threat actor type does this describe?",
+    choices: [
+      "A. Nation-state",
+      "B. Hacktivist",
+      "C. Competitor-sponsored insider",
+      "D. Accidental insider"
+],
+    correctAnswer: "C",
+    explanation: "A competitor-sponsored insider is an internal actor working on behalf of a business rival, distinct from organized crime or nation-state motives.",
+    incorrect: {
+      "A": "A nation-state is unlikely to be involved in industrial pricing theft.",
+      "B": "Hacktivists are ideologically motivated, not financially motivated by competitors.",
+      "D": "This is intentional insider theft, not accidental."
+},
+    examTip: "Competitor threats often involve economic espionage or insiders selling proprietary data."},
+  {
+    id: "L02-Q010",
+    difficulty: "Medium",
+    domain: "Internal Threats",
+    objective: "2.7 Describe internal threat actors and risks",
+    mapping: "SY0-701 Objective 2.7 - Insider threats and controls",
+    scenario: "A departing employee copies customer lists and emails a personal account, claiming they need the data for a job search. Which type of threat actor is this?",
+    choices: [
+      "A. Malicious insider",
+      "B. Hacktivist",
+      "C. Nation-state agent",
+      "D. Social engineer"
+],
+    correctAnswer: "A",
+    explanation: "A departing employee misusing access for personal gain fits the malicious insider category.",
+    incorrect: {
+      "B": "There is no ideological motivation.",
+      "C": "No foreign state sponsorship is present.",
+      "D": "This is not a social engineering attack by an external actor."
+},
+    examTip: "Internal threats come from employees or contractors with legitimate access who abuse it."},
+  {
+    id: "L02-Q011",
+    difficulty: "Medium",
+    domain: "Attack Surface",
+    objective: "3.1 Explain vulnerable software attack vectors",
+    mapping: "SY0-701 Objective 3.1 - Software vulnerabilities and attack vectors",
+    scenario: "A web application uses an outdated library with a publicly disclosed remote code execution flaw. Which attack surface is exposed?",
+    choices: [
+      "A. Network vector",
+      "B. Vulnerable software vector",
+      "C. Human vector",
+      "D. Supply chain vector"
+],
+    correctAnswer: "B",
+    explanation: "An outdated software library with an exploitable flaw exposes a vulnerable software vector.",
+    incorrect: {
+      "A": "This issue is primarily software vulnerability, not network exposure.",
+      "C": "A human vector targets people, not software configuration.",
+      "D": "Supply chain involves third-party components broadly, but the immediate issue is the software vulnerability."
+},
+    examTip: "Vulnerable software attack surface includes unpatched apps and insecure components."},
+  {
+    id: "L02-Q012",
+    difficulty: "Medium",
+    domain: "Attack Surface",
+    objective: "3.2 Explain network attack vectors",
+    mapping: "SY0-701 Objective 3.2 - Network attack surfaces",
+    scenario: "A remote administration port is open on a firewall and uses a legacy protocol without encryption. Which attack surface does this primarily expose?",
+    choices: [
+      "A. Message-based vector",
+      "B. Supply chain vector",
+      "C. Network vector",
+      "D. Human vector"
+],
+    correctAnswer: "C",
+    explanation: "An exposed remote management port with a weak protocol is a network attack surface.",
+    incorrect: {
+      "A": "This is not a message-based attack.",
+      "B": "Supply chain is unrelated to exposed network services.",
+      "D": "It is not primarily a human-targeted attack vector."
+},
+    examTip: "Network attack surface often includes exposed ports, insecure services, and weak remote access."},
+  {
+    id: "L02-Q013",
+    difficulty: "Medium",
+    domain: "Attack Surface",
+    objective: "3.3 Explain lure-based attack vectors",
+    mapping: "SY0-701 Objective 3.3 - Lure-based attack surfaces",
+    scenario: "An employee finds a USB drive labeled \"Salary Bonuses\" in the parking lot and inserts it into their workstation. What type of attack surface is this?",
+    choices: [
+      "A. Lure-based vector",
+      "B. Supply chain vector",
+      "C. Network vector",
+      "D. Message-based vector"
+],
+    correctAnswer: "A",
+    explanation: "This is a lure-based vector: a physical bait designed to entice the victim into executing malicious content.",
+    incorrect: {
+      "B": "This is not a supply chain issue.",
+      "C": "It is not a network-based attack.",
+      "D": "No message or email is involved."
+},
+    examTip: "Lure-based attacks use enticing items like USB drives or offers to trigger user interaction."},
+  {
+    id: "L02-Q014",
+    difficulty: "Medium",
+    domain: "Attack Surface",
+    objective: "3.4 Explain message-based attack vectors",
+    mapping: "SY0-701 Objective 3.4 - Email and messaging attack surfaces",
+    scenario: "Employees receive an email claiming to be from IT that asks them to click a link to reset their password. Which attack surface is being exploited?",
+    choices: [
+      "A. Network vector",
+      "B. Message-based vector",
+      "C. Supply chain vector",
+      "D. Physical vector"
+],
+    correctAnswer: "B",
+    explanation: "A malicious email asking users to click a link exploits a message-based vector.",
+    incorrect: {
+      "A": "This attack uses a message channel, not a network service directly.",
+      "C": "Supply chain relates to third-party components, not an email lure.",
+      "D": "Physical vector is unrelated to email attacks."
+},
+    examTip: "Message-based attacks commonly use email, SMS, and chat as delivery mechanisms."},
+  {
+    id: "L02-Q015",
+    difficulty: "Hard",
+    domain: "Attack Surface",
+    objective: "3.5 Explain supply chain attack surface",
+    mapping: "SY0-701 Objective 3.5 - Supply chain security",
+    scenario: "A popular software update distribution channel is compromised and pushes malware to many customers. Which attack surface does this reflect?",
+    choices: [
+      "A. Lure-based vector",
+      "B. Supply chain attack surface",
+      "C. Human vector",
+      "D. Network sniffing"
+],
+    correctAnswer: "B",
+    explanation: "A compromised update channel is a supply chain attack surface issue because the malicious code is delivered through a trusted vendor process.",
+    incorrect: {
+      "A": "This is not a lure or bait scenario.",
+      "C": "The attack is delivered through the supply chain, not directly through human manipulation.",
+      "D": "Network sniffing is not the primary issue here."
+},
+    examTip: "Supply chain attacks exploit third-party components or distribution processes."},
+  {
+    id: "L02-Q016",
+    difficulty: "Hard",
+    domain: "Attack Surface",
+    objective: "3.1 Explain vulnerable software attack vectors",
+    mapping: "SY0-701 Objective 3.1 - Software vulnerabilities and attack vectors",
+    scenario: "A cloud service exposes several APIs with weak authentication and known security flaws. Which mitigation most directly reduces this attack surface?",
+    choices: [
+      "A. Disable the exposed APIs until secure access is implemented",
+      "B. Provide developer security awareness training",
+      "C. Increase workstation antivirus coverage",
+      "D. Encrypt email traffic"
+],
+    correctAnswer: "A",
+    explanation: "Removing or disabling insecure, exposed APIs reduces the attack surface immediately.",
+    incorrect: {
+      "B": "Training is useful, but it does not immediately remove the insecure API.",
+      "C": "Antivirus does not protect exposed API endpoints.",
+      "D": "Email encryption is unrelated to API security."
+},
+    examTip: "If an exposed service is vulnerable, taking it offline until it is secured is often the best immediate control."},
+  {
+    id: "L02-Q017",
+    difficulty: "Medium",
+    domain: "Attack Surface",
+    objective: "3.2 Explain network attack vectors",
+    mapping: "SY0-701 Objective 3.2 - Network attack surfaces",
+    scenario: "An enterprise router allows remote management over the internet with default credentials. What should be changed first to reduce this network attack surface?",
+    choices: [
+      "A. Update the default credentials and restrict remote management to a VPN",
+      "B. Conduct phishing training for remote users",
+      "C. Disable USB ports on the router",
+      "D. Install a new web application firewall"
+],
+    correctAnswer: "A",
+    explanation: "Securing remote management and removing default credentials reduces the exposed network attack surface.",
+    incorrect: {
+      "B": "Training does not address the exposed router management interface.",
+      "C": "USB ports are not the main issue for remote network management.",
+      "D": "A WAF is not the first fix for an insecure router interface."
+},
+    examTip: "Network exposure is reduced by tightening access to management interfaces and removing insecure defaults."},
+  {
+    id: "L02-Q018",
+    difficulty: "Medium",
+    domain: "Attack Surface",
+    objective: "3.4 Explain message-based attack vectors",
+    mapping: "SY0-701 Objective 3.4 - Email and messaging attack surfaces",
+    scenario: "A company is hit by an attack that starts with a text message containing a malicious link to a fake login page. What vector is this?",
+    choices: [
+      "A. Network vector",
+      "B. Message-based vector",
+      "C. Supply chain vector",
+      "D. Physical vector"
+],
+    correctAnswer: "B",
+    explanation: "A malicious SMS message is a message-based vector, similar to phishing via email.",
+    incorrect: {
+      "A": "This attack uses messaging, not direct network exploitation.",
+      "C": "Supply chain is not involved in the SMS lure.",
+      "D": "Physical vector is unrelated to SMS messages."
+},
+    examTip: "Message-based vectors include phishing via email, SMS, and instant messaging."},
+  {
+    id: "L02-Q019",
+    difficulty: "Hard",
+    domain: "Attack Surface",
+    objective: "3.5 Explain supply chain attack surface",
+    mapping: "SY0-701 Objective 3.5 - Supply chain security",
+    scenario: "A hardware vendor ships devices with preinstalled firmware from a subcontractor, and that firmware contains a hidden backdoor. Which surface is compromised?",
+    choices: [
+      "A. Human vector",
+      "B. Supply chain attack surface",
+      "C. Lure-based vector",
+      "D. Message-based vector"
+],
+    correctAnswer: "B",
+    explanation: "Preinstalled malicious firmware from a subcontractor reflects a supply chain attack surface compromise.",
+    incorrect: {
+      "A": "This issue is about the supplier, not human interaction.",
+      "C": "No bait or lure is used directly.",
+      "D": "No messaging channel is part of this scenario."
+},
+    examTip: "Supply chain risk can come from hardware, firmware, or software acquired from third parties."},
+  {
+    id: "L02-Q020",
+    difficulty: "Expert",
+    domain: "Attack Surface",
+    objective: "3.1 Explain vulnerable software attack vectors",
+    mapping: "SY0-701 Objective 3.1 - Software vulnerabilities and attack vectors",
+    scenario: "A SaaS provider has multiple integrations with third-party plugins, one of which is outdated and exploitable. Which control best reduces the attack surface?",
+    choices: [
+      "A. Disable or update the vulnerable plugin",
+      "B. Increase password complexity for administrators",
+      "C. Add more user training on phishing",
+      "D. Publish service availability metrics"
+],
+    correctAnswer: "A",
+    explanation: "Removing or updating the vulnerable plugin removes the software attack surface caused by the third-party component.",
+    incorrect: {
+      "B": "Password complexity does not address the vulnerable plugin.",
+      "C": "Training does not fix the plugin vulnerability.",
+      "D": "Metrics do not reduce the attack surface."
+},
+    examTip: "When a third-party software component is vulnerable, patching or removing it is the most direct attack surface reduction."},
+  {
+    id: "L02-Q021",
+    difficulty: "Medium",
+    domain: "Social Engineering",
+    objective: "4.1 Describe human attack vectors",
+    mapping: "SY0-701 Objective 4.1 - Human attack vectors and social engineering",
+    scenario: "An employee is observed entering their password in a shared workspace and later the same credentials are used by an unauthorized person. What human attack vector was exploited?",
+    choices: [
+      "A. Tailgating",
+      "B. Shoulder surfing",
+      "C. Pharming",
+      "D. Typosquatting"
+],
+    correctAnswer: "B",
+    explanation: "Shoulder surfing involves observing sensitive information as it is entered, such as a password in a public area.",
+    incorrect: {
+      "A": "Tailgating involves following someone through a door.",
+      "C": "Pharming involves DNS redirection to fake sites.",
+      "D": "Typosquatting uses misspelled domains."
+},
+    examTip: "Human vectors often rely on direct observation or manipulation rather than technical exploits."},
+  {
+    id: "L02-Q022",
+    difficulty: "Hard",
+    domain: "Social Engineering",
+    objective: "4.2 Explain impersonation and pretexting",
+    mapping: "SY0-701 Objective 4.2 - Impersonation and pretexting",
+    scenario: "An attacker calls the help desk pretending to be a manager with a fake maintenance emergency and asks for password reset assistance. What technique is this?",
+    choices: [
+      "A. Pretexting",
+      "B. Phishing",
+      "C. Baiting",
+      "D. Pharming"
+],
+    correctAnswer: "A",
+    explanation: "Pretexting involves creating a false identity and story to persuade someone to reveal information or grant access.",
+    incorrect: {
+      "B": "Phishing typically uses electronic messages rather than a phone-based story.",
+      "C": "Baiting uses a physical lure, not a fabricated role.",
+      "D": "Pharming manipulates DNS or web traffic, not phone impersonation."
+},
+    examTip: "Pretexting combines impersonation with a believable story to manipulate victims."},
+  {
+    id: "L02-Q023",
+    difficulty: "Medium",
+    domain: "Social Engineering",
+    objective: "4.3 Explain phishing and pharming",
+    mapping: "SY0-701 Objective 4.3 - Phishing and pharming techniques",
+    scenario: "A user receives an email from what appears to be their bank asking them to click a link and confirm account details. Which attack is this?",
+    choices: [
+      "A. Pharming",
+      "B. Phishing",
+      "C. Typosquatting",
+      "D. Vishing"
+],
+    correctAnswer: "B",
+    explanation: "This is phishing: a deceptive email guiding the user to a fraudulent site to capture credentials.",
+    incorrect: {
+      "A": "Pharming involves DNS redirection or corrupted hosts, not just a malicious email link.",
+      "C": "Typosquatting depends on misspelled domains, not the email lure itself.",
+      "D": "Vishing is voice phishing over the phone."
+},
+    examTip: "Phishing uses deceptive messages and links to trick users into revealing data."},
+  {
+    id: "L02-Q024",
+    difficulty: "Medium",
+    domain: "Social Engineering",
+    objective: "4.4 Explain typosquatting",
+    mapping: "SY0-701 Objective 4.4 - Typosquatting and malicious domains",
+    scenario: "A user types \"securebank.com\" but lands on \"securbank.com\" and enters login credentials. Which technique is this?",
+    choices: [
+      "A. Pharming",
+      "B. Typosquatting",
+      "C. Pretexting",
+      "D. Tailgating"
+],
+    correctAnswer: "B",
+    explanation: "Typosquatting relies on users mistyping domain names and landing on malicious lookalike sites.",
+    incorrect: {
+      "A": "Pharming manipulates DNS or routing, not necessarily typographical errors.",
+      "C": "Pretexting uses a fabricated story or identity.",
+      "D": "Tailgating is a physical access technique."
+},
+    examTip: "Typosquatting is a domain-based attack that exploits user typing mistakes."},
+  {
+    id: "L02-Q025",
+    difficulty: "Hard",
+    domain: "Social Engineering",
+    objective: "4.5 Describe business email compromise",
+    mapping: "SY0-701 Objective 4.5 - Business email compromise",
+    scenario: "An employee receives an urgent invoice from a vendor asking to redirect payment to a new account. The email appears to come from a legitimate contact but the reply-to address is different. What is this attack?",
+    choices: [
+      "A. Phishing",
+      "B. Business email compromise",
+      "C. Watering hole",
+      "D. Typosquatting"
+],
+    correctAnswer: "B",
+    explanation: "This is business email compromise, where attackers spoof or compromise email to trick victims into changing payment details.",
+    incorrect: {
+      "A": "While related, BEC specifically targets business processes and payments.",
+      "C": "Watering hole attacks compromise legitimate sites frequented by the target audience.",
+      "D": "Typosquatting is about misspelled domains, not payment diversion emails."
+},
+    examTip: "BEC attacks impersonate trusted contacts and focus on fraudulent wire transfers or payment changes."},
+  {
+    id: "L02-Q026",
+    difficulty: "Medium",
+    domain: "Social Engineering",
+    objective: "4.1 Describe human attack vectors",
+    mapping: "SY0-701 Objective 4.1 - Human attack vectors and social engineering",
+    scenario: "An attacker leaves a printed memo that says \"Free gift cards in the break room\" with a QR code leading to a sign-in page. Which type of social engineering is this?",
+    choices: [
+      "A. Pretexting",
+      "B. Baiting",
+      "C. Tailgating",
+      "D. Pharming"
+],
+    correctAnswer: "B",
+    explanation: "Baiting uses a tempting offer to lure victims into taking an unsafe action, such as scanning a QR code.",
+    incorrect: {
+      "A": "Pretexting involves a fabricated story or identity.",
+      "C": "Tailgating involves following someone into a secure area.",
+      "D": "Pharming involves DNS or routing attacks, not physical bait."
+},
+    examTip: "Baiting is a human vector that uses a physical or digital lure to trick victims."},
+  {
+    id: "L02-Q027",
+    difficulty: "Hard",
+    domain: "Social Engineering",
+    objective: "4.2 Explain impersonation and pretexting",
+    mapping: "SY0-701 Objective 4.2 - Impersonation and pretexting",
+    scenario: "An attacker impersonates a senior executive and sends an urgent request to HR asking for employee salary details. What control most directly mitigates this type of attack?",
+    choices: [
+      "A. Strong spam filtering",
+      "B. A verified request procedure for sensitive data",
+      "C. Increased antivirus protection",
+      "D. Domain whitelisting"
+],
+    correctAnswer: "B",
+    explanation: "A verified request procedure ensures that sensitive data requests are validated through trusted channels before disclosure.",
+    incorrect: {
+      "A": "Spam filtering may not catch a credible impersonation email.",
+      "C": "Antivirus does not prevent social engineering requests.",
+      "D": "Whitelisting does not validate the authenticity of the request."
+},
+    examTip: "Impersonation attacks are best mitigated by processes that verify identity before fulfilling requests."},
+  {
+    id: "L02-Q028",
+    difficulty: "Medium",
+    domain: "Social Engineering",
+    objective: "4.3 Explain phishing and pharming",
+    mapping: "SY0-701 Objective 4.3 - Phishing and pharming techniques",
+    scenario: "Users type the correct URL for their bank but are redirected to a fake site because DNS resolution has been altered. What attack is this?",
+    choices: [
+      "A. Phishing",
+      "B. Pharming",
+      "C. Typosquatting",
+      "D. Vishing"
+],
+    correctAnswer: "B",
+    explanation: "Pharming redirects users to malicious sites through DNS or routing manipulation even if the correct URL is entered.",
+    incorrect: {
+      "A": "Phishing usually involves deceptive messages or links.",
+      "C": "Typosquatting relies on typed mistakes, not DNS manipulation.",
+      "D": "Vishing is voice-based social engineering."
+},
+    examTip: "Pharming affects DNS or host resolution, sending users to fraudulent sites without requiring a wrong URL."},
+  {
+    id: "L02-Q029",
+    difficulty: "Hard",
+    domain: "Social Engineering",
+    objective: "4.5 Describe business email compromise",
+    mapping: "SY0-701 Objective 4.5 - Business email compromise",
+    scenario: "An attacker compromises an executive email account and instructs finance to wire funds to a fraudulent account. What additional control would most reduce this risk?",
+    choices: [
+      "A. Multifactor authentication for email accounts",
+      "B. Disabling external email",
+      "C. Enforcing password changes every 30 days",
+      "D. Installing a new firewall"
+],
+    correctAnswer: "A",
+    explanation: "MFA makes it harder for attackers to use a compromised email account to send fraudulent payment requests.",
+    incorrect: {
+      "B": "Disabling external email is impractical for most businesses.",
+      "C": "Frequent password changes do not stop account compromise as effectively as MFA.",
+      "D": "A firewall does not prevent email account compromise."
+},
+    examTip: "MFA is a strong control for protecting email accounts from unauthorized access."},
+  {
+    id: "L02-Q030",
+    difficulty: "Expert",
+    domain: "Social Engineering",
+    objective: "4.1 Describe human attack vectors",
+    mapping: "SY0-701 Objective 4.1 - Human attack vectors and social engineering",
+    scenario: "A contractor is greeted by someone claiming to be a delivery driver with a clipboard and asks them to sign for a package at the secure entrance. Which social engineering tactic was used?",
+    choices: [
+      "A. Pretexting",
+      "B. Phishing",
+      "C. Typosquatting",
+      "D. Tailgating"
+],
+    correctAnswer: "A",
+    explanation: "The attacker used a pretext of being a delivery driver to gain trust. They combined impersonation with a believable story.",
+    incorrect: {
+      "B": "Phishing is electronic, not a face-to-face deception.",
+      "C": "Typosquatting relates to domains.",
+      "D": "Tailgating is following someone through a door, but the underlying tactic here is pretexting by impersonation."
+},
+    examTip: "Pretexting uses a plausible scenario and identity to bypass normal verification procedures."}
 ];
