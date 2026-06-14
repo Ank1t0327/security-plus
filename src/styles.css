@@ -422,14 +422,16 @@ button {
   font-weight: 900;
 }
 
-.secondary-action.next-action {
+.secondary-action.next-action,
+.secondary-action.prev-action {
   border-color: #1d6b57;
   background: #d7eee5;
   color: #134436;
 }
 
 .secondary-action:disabled,
-.secondary-action.next-action:disabled {
+.secondary-action.next-action:disabled,
+.secondary-action.prev-action:disabled {
   cursor: not-allowed;
   opacity: 0.5;
 }
