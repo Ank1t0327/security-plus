@@ -16,21 +16,35 @@ import { lessons, questions } from "./data/questions.js";
 const difficultyOrder = ["All", "Medium", "Hard", "Expert"];
 
 function App() {
-  const [selectedQuestion, setSelectedQuestion] = useState(questions[0]);
+  const [selectedLesson, setSelectedLesson] = useState(lessons[0]);
+  const [selectedQuestion, setSelectedQuestion] = useState(null);
   const [selectedChoice, setSelectedChoice] = useState("");
   const [difficulty, setDifficulty] = useState("All");
   const [query, setQuery] = useState("");
   const [showReview, setShowReview] = useState(false);
 
+  // Get lesson number from question ID (e.g., "L01-Q001" -> "01")
+  const getLessonNumber = (questionId) => questionId.split("-")[0].slice(1);
+
   const filteredQuestions = useMemo(() => {
+    const lessonNumber = selectedLesson.id.slice(-2); // "lesson-01" -> "01"
     return questions.filter((question) => {
+      const questionLessonNumber = getLessonNumber(question.id);
+      const matchesLesson = questionLessonNumber === lessonNumber;
       const matchesDifficulty = difficulty === "All" || question.difficulty === difficulty;
       const searchable = `${question.id} ${question.difficulty} ${question.domain} ${question.objective} ${question.scenario}`;
-      return matchesDifficulty && searchable.toLowerCase().includes(query.toLowerCase());
+      return matchesLesson && matchesDifficulty && searchable.toLowerCase().includes(query.toLowerCase());
     });
-  }, [difficulty, query]);
+  }, [selectedLesson, difficulty, query]);
 
-  const answeredCorrectly = selectedChoice === selectedQuestion.correctAnswer;
+  // Initialize selectedQuestion when lesson changes or on first load
+  useMemo(() => {
+    if (filteredQuestions.length > 0 && (!selectedQuestion || selectedQuestion.id !== filteredQuestions[0].id)) {
+      setSelectedQuestion(filteredQuestions[0]);
+    }
+  }, [filteredQuestions, selectedQuestion]);
+
+  const answeredCorrectly = selectedQuestion && selectedChoice === selectedQuestion.correctAnswer;
 
   function chooseQuestion(question) {
     setSelectedQuestion(question);
@@ -62,25 +76,29 @@ function App() {
             <span>Difficulty bands</span>
           </div>
           <div>
-            <strong>1</strong>
-            <span>Seeded lesson</span>
+            <strong>{lessons.length}</strong>
+            <span>Seeded lessons</span>
           </div>
         </div>
       </section>
 
       <section className="lesson-strip">
         {lessons.map((lesson) => (
-          <article className="lesson-panel" key={lesson.id}>
+          <button
+            className={selectedLesson.id === lesson.id ? "lesson-panel is-active" : "lesson-panel"}
+            key={lesson.id}
+            onClick={() => {
+              setSelectedLesson(lesson);
+              setSelectedChoice("");
+              setShowReview(false);
+            }}
+            type="button"
+          >
             <div className="lesson-panel__title">
               <BookOpen size={20} />
               <h2>{lesson.title}</h2>
             </div>
-            <div className="topic-cloud">
-              {lesson.topics.map((topic) => (
-                <span key={topic}>{topic}</span>
-              ))}
-            </div>
-          </article>
+          </button>
         ))}
       </section>
 
@@ -89,7 +107,7 @@ function App() {
           <div className="browser-header">
             <div>
               <span className="section-kicker">Question Set</span>
-              <h2>Lesson 1</h2>
+              <h2>{selectedLesson.title}</h2>
             </div>
             <ClipboardList size={24} />
           </div>
@@ -120,7 +138,7 @@ function App() {
           <div className="question-list">
             {filteredQuestions.map((question, index) => (
               <button
-                className={selectedQuestion.id === question.id ? "question-row is-selected" : "question-row"}
+                className={selectedQuestion && selectedQuestion.id === question.id ? "question-row is-selected" : "question-row"}
                 key={question.id}
                 onClick={() => chooseQuestion(question)}
                 type="button"
@@ -135,6 +153,7 @@ function App() {
           </div>
         </aside>
 
+        {selectedQuestion && (
         <section className="exam-card" aria-live="polite">
           <div className="question-meta">
             <span>{selectedQuestion.id}</span>
@@ -241,6 +260,7 @@ function App() {
             </section>
           )}
         </section>
+        )}
       </section>
     </main>
   );
