@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   BookOpen,
   CheckCircle2,
@@ -37,12 +37,25 @@ function App() {
     });
   }, [selectedLesson, difficulty, query]);
 
-  // Initialize selectedQuestion when lesson changes or on first load
-  useMemo(() => {
-    if (filteredQuestions.length > 0 && (!selectedQuestion || selectedQuestion.id !== filteredQuestions[0].id)) {
-      setSelectedQuestion(filteredQuestions[0]);
+  // Initialize selectedQuestion when filtered questions change
+  useEffect(() => {
+    if (filteredQuestions.length > 0) {
+      const hasCurrentQuestion = selectedQuestion && filteredQuestions.some((q) => q.id === selectedQuestion.id);
+      if (!hasCurrentQuestion) {
+        setSelectedQuestion(filteredQuestions[0]);
+        setSelectedChoice("");
+        setShowReview(false);
+      }
+    } else {
+      setSelectedQuestion(null);
+      setSelectedChoice("");
+      setShowReview(false);
     }
   }, [filteredQuestions, selectedQuestion]);
+
+  const selectedQuestionIndex = selectedQuestion
+    ? filteredQuestions.findIndex((question) => question.id === selectedQuestion.id)
+    : -1;
 
   const answeredCorrectly = selectedQuestion && selectedChoice === selectedQuestion.correctAnswer;
 
@@ -50,6 +63,26 @@ function App() {
     setSelectedQuestion(question);
     setSelectedChoice("");
     setShowReview(false);
+  }
+
+  function handleLessonChange(event) {
+    const lesson = lessons.find((item) => item.id === event.target.value);
+    if (lesson) {
+      setSelectedLesson(lesson);
+      setSelectedChoice("");
+      setShowReview(false);
+    }
+  }
+
+  function goToNextQuestion() {
+    if (filteredQuestions.length === 0) {
+      return;
+    }
+
+    const nextIndex = selectedQuestionIndex + 1;
+    if (nextIndex < filteredQuestions.length) {
+      chooseQuestion(filteredQuestions[nextIndex]);
+    }
   }
 
   return (
@@ -82,24 +115,17 @@ function App() {
         </div>
       </section>
 
-      <section className="lesson-strip">
-        {lessons.map((lesson) => (
-          <button
-            className={selectedLesson.id === lesson.id ? "lesson-panel is-active" : "lesson-panel"}
-            key={lesson.id}
-            onClick={() => {
-              setSelectedLesson(lesson);
-              setSelectedChoice("");
-              setShowReview(false);
-            }}
-            type="button"
-          >
-            <div className="lesson-panel__title">
-              <BookOpen size={20} />
-              <h2>{lesson.title}</h2>
-            </div>
-          </button>
-        ))}
+      <section className="lesson-picker">
+        <label>
+          <span className="section-kicker">Lesson</span>
+          <select value={selectedLesson.id} onChange={handleLessonChange}>
+            {lessons.map((lesson) => (
+              <option key={lesson.id} value={lesson.id}>
+                {lesson.title}
+              </option>
+            ))}
+          </select>
+        </label>
       </section>
 
       <section className="workspace">
@@ -219,6 +245,14 @@ function App() {
               type="button"
             >
               Reset
+            </button>
+            <button
+              className="secondary-action next-action"
+              onClick={goToNextQuestion}
+              disabled={selectedQuestionIndex === -1 || selectedQuestionIndex === filteredQuestions.length - 1}
+              type="button"
+            >
+              Next Question
             </button>
           </div>
 
